@@ -5,54 +5,54 @@ import java.util.List;
 public class PasswordChecker {
 
     public static void main(String[] args) {
-        String PasswordGuess;
-        String SamplePassword = RandomPassGenerator();
-        int SampleNumber = 4;
-        List<String> PasswordSamples = new ArrayList<>();
-        for (int i = 0; i < SampleNumber; i++) {
-            PasswordSamples.add(RandomPassGenerator());
+        String passwordGuess;
+        String samplePassword = randomPassGenerator();
+        int sampleNumber = 4;
+        List<String> passwordSamples = new ArrayList<>();
+        for (int i = 0; i < sampleNumber; i++) {
+            passwordSamples.add(randomPassGenerator());
         }
-        System.out.println(PasswordSamples);
-        boolean password_chosen = false;
+        System.out.println(passwordSamples);
+        boolean passwordChosen = false;
         do {
             Scanner keyboard = new Scanner(System.in);
             System.out.println("enter index of desired password:");
-            String PassIndexS = keyboard.nextLine();
-            int PassIndexI = Integer.parseInt(PassIndexS);
-            if (PassIndexI < 0 || PassIndexI >= SampleNumber) {
+            String passIndexS = keyboard.nextLine();
+            int passIndexI = Integer.parseInt(passIndexS);
+            if (passIndexI < 0 || passIndexI >= sampleNumber) {
                 System.out.println("index not in range");
             } else {
-                password_chosen = true;
-                SamplePassword = PasswordSamples.get(PassIndexI);
+                passwordChosen = true;
+                samplePassword = passwordSamples.get(passIndexI);
             }
-        } while(!password_chosen);
-        System.out.println("Randomly Generated Password: " + SamplePassword);
+        } while(!passwordChosen);
+        System.out.println("Randomly Generated Password: " + samplePassword);
         do {
             Scanner keyboard = new Scanner(System.in);
             System.out.println("enter password guess:");
-            PasswordGuess = keyboard.nextLine();
-            boolean correct_status = PasswordGuess.equals(SamplePassword);
-            System.out.println(correct_status);
-            if (!correct_status) {
-                int GuessLength = PasswordGuess.length();
-                int SampleLength = SamplePassword.length();
-                String PasswordGuessLower = PasswordGuess.toLowerCase();
-                String SamplePasswordLower = SamplePassword.toLowerCase();
-                if (GuessLength != SampleLength) {
+            passwordGuess = keyboard.nextLine();
+            boolean correctStatus = passwordGuess.equals(samplePassword);
+            System.out.println(correctStatus);
+            if (!correctStatus) {
+                int guessLength = passwordGuess.length();
+                int sampleLength = samplePassword.length();
+                String passwordGuessLower = passwordGuess.toLowerCase();
+                String samplePasswordLower = samplePassword.toLowerCase();
+                if (guessLength != sampleLength) {
                     System.out.println("incorrect length");
-                } else if (PasswordGuessLower.equals(SamplePasswordLower)) {
+                } else if (passwordGuessLower.equals(samplePasswordLower)) {
                     System.out.println("Upper/Lower case mismatch");
                 } else {
                     System.out.println("incorrect characters");
                 }
             }
         }
-        while (!PasswordGuess.equals(SamplePassword));
+        while (!passwordGuess.equals(samplePassword));
     }
-    public static String RandomPassGenerator() {
-        int PassLength = 8;
-        String[] myArray = new String[PassLength];
-        for (int i = 0; i < PassLength; i++) {
+    public static String randomPassGenerator() {
+        int passLength = 8;
+        String[] myArray = new String[passLength];
+        for (int i = 0; i < passLength; i++) {
             char c  = (char)((Math.random()*1000)%26 + 'a');
             String d = Character.toString(c);
             if (((int)(Math.random()*5))%2 == 0) {

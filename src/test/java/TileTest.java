@@ -1,6 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import MinesweeperProject.Tile;
+import minesweeperProject.Tile;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 

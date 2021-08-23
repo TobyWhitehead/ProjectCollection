@@ -7,70 +7,70 @@ public class GuesserGame {
         System.out.println("\nINSTRUCTIONS:\n");
         System.out.println("Using the least number of guesses possible, find the correct numbers and order");
         System.out.println("of numbers. Each number can take values 0-4. Input should be of the form: 1234. \n");
-        int[] GameOut = GameGenerator();
-        int GuessNumber = 0;
-        System.out.println(Arrays.toString(GameOut));
-        boolean answer_guessed = false;
+        int[] gameOut = gameGenerator();
+        int guessNumber = 0;
+        System.out.println(Arrays.toString(gameOut));
+        boolean answerGuessed = false;
         Scanner keyboard = new Scanner(System.in);
         do {
             System.out.println("Enter Guess: ");
-            String GuessInput = keyboard.nextLine();
-            GuessNumber++;
-            int[] NumArray = new int[GuessInput.length()];
-            for (int i = 0; i < GuessInput.length(); i++) {
-                NumArray[i] = GuessInput.charAt(i) - '0';
+            String guessInput = keyboard.nextLine();
+            guessNumber++;
+            int[] numArray = new int[guessInput.length()];
+            for (int i = 0; i < guessInput.length(); i++) {
+                numArray[i] = guessInput.charAt(i) - '0';
             }
-            if (NumArray.length != GameOut.length) {
+            if (numArray.length != gameOut.length) {
                 System.out.println("Incorrect Guess Length");
-            } else if (Arrays.equals(NumArray, GameOut)) {
-                answer_guessed = true;
+            } else if (Arrays.equals(numArray, gameOut)) {
+                answerGuessed = true;
             } else {
-                posCounter(NumArray, GuessInput, GameOut);
-                numCounter(NumArray, GuessInput, GameOut);
+                posCounter(numArray, guessInput, gameOut);
+                numCounter(numArray, guessInput, gameOut);
             }
         }
-        while(!answer_guessed);
+        while(!answerGuessed);
         System.out.println("correct");
-        System.out.println("total guesses used: " + GuessNumber);
+        System.out.println("total guesses used: " + guessNumber);
     }
-    public static int[] GameGenerator() {
+    public static int[] gameGenerator() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter game size: ");
-        String GameSizeS = keyboard.nextLine();
-        int GameSizeI = Integer.parseInt(GameSizeS);
-        int[] GameArray = new int[GameSizeI];
-        for (int i = 0; i < GameSizeI; i++) {
+        String gameSizeS = keyboard.nextLine();
+        int gameSizeI = Integer.parseInt(gameSizeS);
+        int[] gameArray = new int[gameSizeI];
+        for (int i = 0; i < gameSizeI; i++) {
             int j = (int) (Math.random() * 5);
-            GameArray[i] = j;
+            gameArray[i] = j;
         }
-        return(GameArray);
+        return(gameArray);
     }
 
-    public static void posCounter(int[] NumArray, String GuessInput, int[] GameOut) {
-        int PositionCounter = 0;
-        for (int j = 0; j < GuessInput.length(); j++) {
-            int IntSub = NumArray[j] - GameOut[j];
-            if (IntSub == 0) {
-                PositionCounter++;
+    public static void posCounter(int[] numArray, String guessInput, int[] gameOut) {
+        int positionCounter = 0;
+        for (int j = 0; j < guessInput.length(); j++) {
+            int intSub = numArray[j] - gameOut[j];
+            if (intSub == 0) {
+                positionCounter++;
             }
         }
-        System.out.println("Correct Position: " + PositionCounter);
+        System.out.println("Correct Position: " + positionCounter);
     }
 
-    public static void numCounter(int[] NumArray, String GuessInput, int[] GameOut) {
-        int NumberCounter = 0;
-        for (int k = 0; k < GuessInput.length(); k++) {
+    public static void numCounter(int[] numArray, String guessInput, int[] gameOut) {
+        int numberCounter = 0;
+        for (int k = 0; k < guessInput.length(); k++) {
             boolean contains = false;
-            for (int s: GameOut) {
-                if (s == NumArray[k]) {
+            for (int s: gameOut) {
+                if (s == numArray[k]) {
                     contains = true;
                     break;
                 }
             }
             if (contains) {
-                NumberCounter++;
+                numberCounter++;
             }
         }
-        System.out.println("Correct Number: " + NumberCounter);
+        System.out.println("Correct Number: " + numberCounter);
     }
 }
