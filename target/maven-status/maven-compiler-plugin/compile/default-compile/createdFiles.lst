@@ -1,8 +1,8 @@
-ShopperProject\Cart.class
-ShopperProject\Shopper.class
-ShopperProject\Catalogue.class
+minesweeperProject\Minesweeper.class
+shopperProject\Shopper.class
+shopperProject\Cart.class
+shopperProject\Item.class
 PasswordChecker.class
-MinesweeperProject\Minesweeper.class
+shopperProject\Catalogue.class
 GuesserGame.class
-MinesweeperProject\Tile.class
-ShopperProject\Item.class
+minesweeperProject\Tile.class
